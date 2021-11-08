@@ -7,7 +7,7 @@
   //$_SESSION["designate"]="s";
   else if($_SESSION["designate"]=="s"){
 ?>
-<!doctype html>
+<!Doctype html>
 <html>
     <head>
 	  <title><?php echo $_SESSION["pnm"]; ?> Student's class main page</title>
@@ -320,9 +320,9 @@
 			<li class="d-flex justify-content-center nav-item flex-fill">
 			  <a class="nav-link" data-toggle="tab" href="#annu1">Announcements</a>
 			</li>
-			<li class="nav-item flex-fill d-flex justify-content-center">
-			  <a class="nav-link" data-toggle="tab" href="#ontest">Online Tests</a>
-			</li>
+			<!-- <li class="nav-item flex-fill d-flex justify-content-center">
+			  <a class="nav-link" data-toggle="tab" href="#ontest">Online Tests hello</a>
+			</li> -->
 			<li class="nav-item flex-fill d-flex justify-content-center">
 			  <a class="nav-link" data-toggle="tab" href="#attte">Attendance</a>
 			</li>

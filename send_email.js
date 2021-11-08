@@ -6,7 +6,7 @@
         Username: "khumonar@gmail.com",
         Password: "Khushal@1408",
         To: to,
-        From: "khumonar@gmail.com",
+        From: "<khumonar@gmail.com> Performers.com",
         Subject: "Email Verification",
         Body:body,
       });

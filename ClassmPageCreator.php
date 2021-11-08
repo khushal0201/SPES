@@ -287,9 +287,9 @@
 			<li class="nav-item col d-flex justify-content-center">
 			  <a class="nav-link" data-toggle="tab" href="#tests">Tests</a>
 			</li>
-			<li class="nav-item col d-flex justify-content-center">
+			<!-- <li class="nav-item col d-flex justify-content-center">
 			  <a class="nav-link " data-toggle="tab" href="#otest">Online Tests</a>
-			</li>
+			</li> -->
 			<li class="nav-item col d-flex justify-content-center">
 			   <a class="nav-link " data-toggle="tab" href="#attend">Attendance</a>
 			</li>
