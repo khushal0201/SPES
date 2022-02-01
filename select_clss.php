@@ -8,27 +8,27 @@
    
    if($vals=="create"){
    
-   $sql1="select * from classes where creator=$uid;";
-   $result=mysqli_query($conn,$sql1);
-   if(!$result){
-	   array_push($err,"Selection error=".mysqli_error($conn));
-   }
-   if(count($err)>0)
-	   echo json_encode($err);
-   else{
-	   
-	   while($uio=mysqli_fetch_assoc($result)){
-		    $dte=$uio["cred"];
-			//echo $dte;
-			if($dte!=''){
-			$ndate=date_create_from_format("Y-m-d",$dte);
-			$uio["cred"]=date_format($ndate,"d-M-Y");
+			$sql1="select * from classes where creator=$uid;";
+			$result=mysqli_query($conn,$sql1);
+			if(!$result){
+				array_push($err,"Selection error=".mysqli_error($conn));
 			}
-		 array_push($wer,$uio);   
-	   }
-	   
-       echo json_encode($wer);
-   }
+			if(count($err)>0)
+				echo json_encode($err);
+			else{
+				
+				while($uio=mysqli_fetch_assoc($result)){
+						$dte=$uio["cred"];
+						//echo $dte;
+						if($dte!=''){
+						$ndate=date_create_from_format("Y-m-d",$dte);
+						$uio["cred"]=date_format($ndate,"d-M-Y");
+						}
+					array_push($wer,$uio);   
+				}
+				
+				echo json_encode($wer);
+			}
    }
 	else{
 	   $sql2="select * from user_class where user_id=$uid";

@@ -156,6 +156,7 @@
 		   
 		   $(document).on("click","#but0",function(){
 			   if(tchk=="false"){
+				    alert("You need to Login or Signup First")
 					return false;
 				}
 			   window.open("opp.php","_self");

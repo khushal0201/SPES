@@ -691,9 +691,9 @@
 			<li class="d-flex justify-content-center nav-item flex-fill">
 			  <a class="nav-link" data-toggle="tab" href="#annu">Announcements</a>
 			</li>
-			<li class="d-flex justify-content-center nav-item flex-fill">
+			<!-- <li class="d-flex justify-content-center nav-item flex-fill">
 			  <a class="nav-link" data-toggle="tab" href="#tsst">Online Tests</a>
-			</li>
+			</li> -->
 			<li class="d-flex justify-content-center nav-item flex-fill">
 			  <a class="nav-link" data-toggle="tab" href="#antid">Attendance</a>
 			</li>
