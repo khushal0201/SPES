@@ -42,11 +42,11 @@
 	   else{
 		   
 		   while($uio=mysqli_fetch_assoc($result)){
-			   $sql3="select * from classes where id='".$uio["class_id"]."'";
+			   $sql3="select * from classes where id='".$uio["class_id"]."'";//Getting Class info of joiner
 			   $res2=mysqli_query($conn,$sql3);
 			   $fet2=mysqli_fetch_assoc($res2);
 			   $cid=$fet2["creator"];
-			   $sql6="select * from user_g where user_id=$cid";
+			   $sql6="select * from user_g where user_id=$cid";//Getting details of the creator
 			   //echo $sql6;
 			   $res5=mysqli_query($conn,$sql6);
 			   $fet5=mysqli_fetch_assoc($res5);

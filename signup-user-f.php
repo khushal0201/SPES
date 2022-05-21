@@ -25,7 +25,7 @@
 		   if(!mysqli_query($conn,$sql2)){
 			   array_push($arr,"err".mysqli_error($conn));
 		   }
-		   $codee=$code+1;
+		   $codee=rand(1000,9999);
 		   $sql3="insert into otp_gen(code) values($codee)";
 		   if(!mysqli_query($conn,$sql3)){
 			   array_push($arr,"err".mysqli_error($conn));

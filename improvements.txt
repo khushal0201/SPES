@@ -1,0 +1,9 @@
+To check joiner has already joined 
+Remove the joiner 
+class students no separate table  for every class
+set link check if student is joined by php(pre class joiner on joinni2)
+Resolving the Creator pid issue
+Deletion of Students and respective data manipulation
+Remove the OTP check in class entry for teachers and students
+Stop Google Window for once
+Email confimation back side usin session

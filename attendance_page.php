@@ -25,7 +25,8 @@
 	    $(document).ready(function(){
 			alert("thats="+"<?php echo $_SESSION['sub_name'];?>")
 			var forfut1="";
-            var forfut2="";			
+            var forfut2="";	
+			//Loading the Data		
 			$.ajax({
 				url:"select_students.php",
 				data:{},
@@ -43,7 +44,7 @@
 							forfut2=aga;
 							var maybe="<thead><tr id='mines'><th>Student ID</th><th>Student Name</th><th>Total</th>";
 							for(y in aga){
-								maybe+="<th><input type='date' name='"+aga[y].id+"' value='"+aga[y].daty+"'/></th>";
+								maybe+="<th><input type='date' name='"+aga[y].id+"' class='ds' value='"+aga[y].daty+"'/></th>";
 							}
 							maybe+="</tr></thead><tbody>";
 							var t3="<tr><td>Total</td></tr>";
@@ -91,6 +92,7 @@
 					
 				}
 			});
+			//Adding new Date
 			$("#b1").click(function(){
 				
 				$.ajax({
@@ -113,14 +115,15 @@
 			});
 			$(document).on('change','.ds',function(){
 				var seer=$(this).serialize();
-				
+				console.log("Changed date")
 				$.ajax({
 					url:"update_date_att.php",
 					data:seer,
 					type:"post",
 					success:function(msg){
 						var asd=jQuery.parseJSON(msg);
-						alert(asd);
+                        console.log(asd)
+						// alert(asd);
 					}
 				});
 			});
@@ -137,6 +140,7 @@
 					
 			});
 			
+			//Trying to do add by ajax
 			
 			$("#frm1").submit(function(event){
 				event.preventDefault();

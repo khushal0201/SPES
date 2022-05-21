@@ -1,5 +1,13 @@
 <?php
   session_start();
+  if(empty($_SESSION["id"])){
+	  echo "<script>window.open('exx.php','_self')</script>";
+	  exit();
+  }
+  if(empty($_SESSION["pid"]) || ($_SESSION["pid"]!=-400&&$_SESSION["pid"]!="Creator")){
+	echo "<script>window.open('exx.php','_self')</script>";
+	exit();
+  }
   $_SESSION["designate"]="Creator";
   $_SESSION['pid']="Creator";
   $_SESSION["test_id"]="";
@@ -20,6 +28,7 @@
 	<script>
 	    $(document).ready(function(){
 			 var subss={};
+			 //List of Subjects
 		     $.ajax({
 				 url:"select_sub.php",
 				 type:"post",
@@ -29,6 +38,7 @@
 					  
 					 var op=jQuery.parseJSON(msg);
 					//alert("Dont consider this="+JSON.stringify(op));
+					console.log(op);
 					 for(x in op){
 						 subss[op[x]["sub_id"]]={};
 						 subss[op[x]["sub_id"]]["name"]=op[x]["sub_name"];
@@ -41,6 +51,7 @@
 				 }
 				 
 			 });
+			//Going to the Attendance page
 			$(document).on('click','.numb',function(){
 				var isp=$(this).attr("id");
 				var nam=$(this).val();
@@ -58,6 +69,7 @@
 					 }
 				 });
 			});
+
             $.ajax({
 				url:"select_test.php",
 				data:{ty:"getf"},
@@ -149,22 +161,27 @@
 							window.open("ve_test_sub.php","_self");
 						}
 					});
-				});			
+				});	
+			//Open the message		
 			$("#b5").click(function(){
 				window.open("public_message.php","_self");
 			});
 			$("#b1").click(function(){
 				window.open("add.php","_self");
 			});
+			//insert subject
             $("#b2").click(function(){
 				window.open("insert_sub_page.php","_self");
 			});	
+			// insert test
            $("#b3").click(function(){
 				window.open("insert_test_page.php","_self");
-			});	
+			});
+			
             $("#b4").click(function(){
 				window.open("calculated_tests.php","_self");
 			});
+			// update the teachers
             $("#b6").click(function(){
 				window.open("up_teachers.php","_self");
 			});		
@@ -266,7 +283,7 @@
 	     
 	   <h1 align="center"><?php echo $_SESSION["name"]; ?> Class's Dashboard</h1>
 	   <br>
-	   
+	   <!-- navbar -->
 	   <nav class="navbar navbar-expand-sm bg-light navbar-light">
 		  <ul class="navbar-nav">
 		    <li class="nav-item col d-flex justify-content-center">
@@ -306,6 +323,7 @@
 	   
 	   
 	   <div class="container tab-content" id="tdata">
+		   <!-- Students List will be shown here , also editing of names-->
 	       <div id="students" class="tab-pane container fade"> 
 		      <h3 class="d-flex justify-content-center">Students of class:-</h3>
 			  <div><input type="button" id="b8" class='btn btn-primary' value="Edit Students">
@@ -316,7 +334,9 @@
 			     
 			  </div>
 		   </div>
+		   <!-- list of teachers -->
 		   <div id="teachers" class="tab-pane container fade">
+
 		      <h3>Teachers of class-</h3>
 			  <div><input type="button" id="b7" class='btn btn-primary' value="Edit Teachers">
 			       <input type="button" id="b6" class="btn btn-outline-primary" value="Add Teachers">
@@ -327,6 +347,7 @@
 			  
 			  </div>
 		   </div>
+		   <!-- Subjects of class adding and editing -->
 	       <div id="sybs" class="tab-pane container fade">
 		      <h3 align='center'>Subjects Of Class</h3><br><br>
 			  <div class='d-flex justify-content-end'>
@@ -349,6 +370,7 @@
 			  </div>
 			  
 		   </div>
+	    	<!-- Checking the test  -->
 		   <div id="tests" class="tab-pane container fade">
 		       <h3>Tests of Class</h3>
 			   <div class='d-flex justify-content-end'>
@@ -370,6 +392,7 @@
 			  <br>
 			  
 		   </div >
+		   <!-- Leave this part -->
 		   <div id="otest" class="tab-pane container fade"> 
 		      <h3>Tests In class-</h3>
 			  <div>
@@ -377,19 +400,20 @@
 			  </div>
 			  <!--<input type="button" value="Make Tests">-->
 		   </div>
-		  
+		   <!-- Attendance part -->
 		   <div id="attend" class="tab-pane container fade">
 		      <h3>Attendance Of Students Subject wise</h3>
 			  <div id="d111"></div>
 			  
 		   </div>
-		      
+		    <!-- Message Part -->
 		   <div id="msgs" class="tab-pane container fade">
 		       <h4 align='center'>Messages in this group</h4>
 			   <br><br>
 		 	   <!--<input id="b5" type="button" value="Messages"/>-->
 		       <?php include 'select_chats.php'; ?>	   
-		   </div>	   
+		   </div>	  
+		   <!-- Information tab  -->
 			<div id="infor" class="tab-pane container active">
 			<br></br>
 			   <div class='d-flex justify-content-center'>

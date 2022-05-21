@@ -8,11 +8,8 @@
    $res=mysqli_query($conn,$sql1);
    $fet=mysqli_fetch_assoc($res);
    if(is_null($fet["email"])){
-	   array_push($err,"Email");
-	   
-   } 
-   else{
-	   
+	//    array_push($err,"Email");
+
 	    $sql2="select email from user_g where email='$email'";
 	    $res1=mysqli_query($conn,$sql2);
 	    $fet2=mysqli_fetch_assoc($res1);
@@ -20,6 +17,10 @@
 		   array_push($err,"Email-g");
 		   
 	    } 
+		else{
+			array_push($err,"Email");
+		}
+   }
 	   else{
 		   
 		   $sql2="select user_id,name,pass,img from user_n where email='$email'";
@@ -38,6 +39,6 @@
 			   $_SESSION["trav"]="2";
 			   array_push($err,"True");}
 	   }   
-   }   
+      
    echo json_encode($err);
   ?>

@@ -44,7 +44,7 @@
 			 
 		 });
          $("#frm1").submit(function(event){
-			 
+			 console.log("to the submission")
 			 event.preventDefault();
 			 if($("#frm1")[0].checkValidity()==false){
 				 
@@ -56,6 +56,7 @@
 				 type:"post",
 				 data:oi,
 				 success:function(msg){
+					 console.log("Returning")
 					 var rec=jQuery.parseJSON(msg);
 					 alert("lenght:"+rec.length+",data="+rec);
 					 window.open("ClassmPageCreator.php","_self");

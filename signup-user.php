@@ -43,6 +43,7 @@
 				   type:"post",
 			       success:function(msg){
 					   var op=jQuery.parseJSON(msg);
+					   console.log(op)
 					   if(op[0]=="Email"){
 						   
 						   $(".modal-body").html("<h3>Email Doesn't Exist</h3>");
@@ -53,17 +54,21 @@
 						   
 					   }
 					   else if(op[0]=="Password"){
-						   alert("Password doesnt match");
+						   $(".modal-body").html("<h3>Password doesn't match</h3>");
+						   $("#inffo1").modal("toggle");
 						    if(f==0)
 						     $("#d122").append("<input type='button' value='Sign up instead'>");
 					         f=1;
 						   
 					   }
 					   else if(op[0]=="Email-g"){
-						   alert("Password doesnt match");
-						    if(f==0)
-						     $("div").append("Try Logging with Google Account:<input type='button' value='G-Sign in'>");
+						  $(".modal-body").html("<h3>Login in With google</h3>");
+						   $("#inffo1").modal("toggle")
+						    if(f==0){
+							 console.log("here:"+$("#d122").html());
+						     $("#d122").append("Try Logging with Google Account:<input type='button' value='G-Sign in'>");
 					         f=1;
+							}
 						   
 					   }
 					   else{
@@ -113,7 +118,7 @@
 			});
 			$(document).on("change",".form-check-input",function(){
 				console.log("chng");
-				togPss();
+				// togPss();
 			});
 			function togPss(){
 				if($(".orgp").css("display")!="none"){
@@ -254,6 +259,7 @@
 					}
 				});
 			});
+			//Deleting the Profile Picture
 			$(document).on("click","#b23",function(){
 				$("#dp").val();
 				$("#dp")[0].setCustomValidity("");
@@ -286,6 +292,20 @@
 					}	
 				});
 			});
+			$("#chkk").click(()=>{
+				   
+				   if($("#chkk").prop("checked")==true){
+					   console.log("Vis Trur")
+                       $("#pass,#pass1").attr("type","text")
+					   $("#labc").html("Hide Password")
+				   }
+				   else{
+					console.log("Vis False")
+					$("#pass,#pass1").attr("type","password")
+					$("#labc").html("Show Password")
+				   }
+
+			})
 			$("#b21").click(function(){
 				$("#d2").hide();
 				$("#d1").show();
@@ -444,7 +464,7 @@
 				  <div class="orr d-flex justify-content-center">Or Log-in With Google</div>
 				  <div id="3333" class="g-signin2 d-flex justify-content-center" data-onsuccess="onSignIn" data-theme="dark"></div>
 	  </div>
-	  <div class="d122"></div>
+	  <div id="d122"></div>
 		</div>		
 		
 		
@@ -502,16 +522,21 @@
 			  <div class="form-group">
 				 <label for="pass">Enter your Password</label>
 				 <input type="password"  class="form-control orgp" name="pass" id="pass" required><br>
-				 <input type="text"  class="form-control fakp">
+				 <!-- <input type="text"  class="form-control fakp"> -->
 				 <div class="invalid-feedback">Please fill out this field.</div>
 			  </div>
 			  <div class="form-group">
 				 <label for="pass1">Retype your Password</label>
 				 <input type="password"  class="form-control orgp" name="pass1" id="pass1" required><br>
-				 <input type="text"  class="form-control fakp">
+				 <!-- <input type="text"  class="form-control fakp"> -->
 				 <div class="invalid-feedback">Please fill out this field.</div>
 			   </div>
-			  
+			   <div class="form-check">
+                     
+			        <input type="checkbox" class="form-check-input" name="" id="chkk">
+					<label id="labc" for="form-check-label" for="chkk">Show Password</label>
+
+			   </div>
 				 <input type="submit" value="Submit" class="btn btn-warning btn-block">
 			 </form>
 		  </div>

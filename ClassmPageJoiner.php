@@ -1,6 +1,10 @@
 <?php
   session_start();
   $_SESSION["tty"]="";
+  if(empty($_SESSION["id"])){
+	echo "<script>window.open('exx.php','_self')</script>";
+	exit();
+}
   if(isset($_POST["des"])){
 	  $_SESSION["designate"]=$_POST["des"];
   }
@@ -21,6 +25,7 @@
 			alert(<?php $_SESSION["pnm"]; ?>);
 			var subs1={};
 			var teach1={};
+			//To show the Subjects
 		     $.ajax({
 				 url:"select_sub.php",
 				 type:"post",
@@ -39,6 +44,7 @@
 				 }
 				 
 			 });
+			 //Normal Tests
 			 $.ajax({
 				 url:"select_test.php",
 				 type:"post",
@@ -55,6 +61,7 @@
 					 }
 				 }
 			 });
+			 //madeup test
 			 $.ajax({
 				 url:"select_test.php",
 				 type:"post",
@@ -89,7 +96,7 @@
 			  var errs={};
 			  errs["0"]="Done";
 			  errs["1"]="Error: not started yet";
-			  
+			  //This is For the Scheduled Tests online
 			 function themt(){ 
 				$.ajax({
 					 url:"create_test_entry.php",
@@ -128,6 +135,9 @@
 					 
 				  //$(document.documentElement).fullscreen();*/
 			 }
+
+
+			 //This is For Online Tests
 			 function testg(ele){
 				
                  var tidd=$(ele).attr("data-id");
@@ -340,6 +350,7 @@
 			       <input type="button" id="b1" value="Add more Students">
 			  </div>
 		   </div>-->
+		   <!-- subjects of the class -->
 	       <div class="tab-pane container" id='subb3'>
 		      <h3>Subjects Of Class-</h3>
 			  <br>
@@ -359,6 +370,7 @@
 			  </div>
 			  
 		   </div>
+		   <!-- Class Test Both internal and external -->
 		   <div class="tab-pane container fade" id="pates">
 			   <div>
 				  <h3>Tests of Class-</h3>
@@ -372,6 +384,7 @@
 				  </div>
 			   </div>
 			</div>  
+			<!-- TEachers list -->
            <div class="tab-pane container fade" id='teachss'>
 		      <h3 align='center'>Teachers</h3>
 			   <br>
@@ -380,15 +393,18 @@
 			  
 			   </div>
 		   </div>
+		   <!-- Students List -->
            <div class="tab-pane container fade" id='studss'>
 		      <h3 align='center'>Students</h3>
 			   <div id='d88' class='d-flex justify-content-center'>
 			     
 			  </div>
-		   </div>		   
+		   </div>	
+		   <!-- Not Needed	    -->
 		   <div class="tab-pane container fade" id='annu1'>
 		      <h3 align='center'>Announcements</h3>
 		   </div>
+		   <!-- Online tests are also not needed -->
 		   <div class="tab-pane container fade" id='ontest'> 
 		      <h3>Upcoming Tests in the Class-</h3>
 			  <div id="d55">
@@ -403,6 +419,7 @@
 			  <div id='d99'>
 			  </div>
 		   </div>
+		   <!-- See your attendance -->
 		   <div class="tab-pane container fade" id='attte'>
 		      <h3>Attendance Of Students Subject wise</h3>
 			  <div id="d111"></div>
@@ -519,6 +536,7 @@
 					 }
 				 }
 			 });
+			 //Online Tests
 			 $(document).on("click","#d48 >.tttt,#d72>.tttt,#d70>.tttt",function(event){
 				 event.preventDefault();
 				 var gtid=$(this).attr("data-id");
@@ -537,6 +555,7 @@
 				 });
 				 
 			 });
+			 //Online Tests
 			 $(document).on('click','#d46 >.tttt,#d44 > .tttt',function(){
 				 var tidi=$(this).attr("data-id");
 				 var tinm=$(this).val();
@@ -556,6 +575,7 @@
 					 }
 				 });
 			 });
+			    //Madeup tests
 				$(document).on('click',"#d13>table>tbody>tr>td>.bbv,.tested1 ",function(){
 					var id=$(this).attr("id");
 					
@@ -613,6 +633,8 @@
 					 }
 					 
 			      });
+
+				  //Checking the Students
 				  $.ajax({
 						url:"select_students.php",
 						type:"post",
@@ -634,6 +656,7 @@
 							}
 						}
 					});
+					//selecting the teachers
 				  function loadt(){
 					$.ajax({
 						url:"select_students.php",

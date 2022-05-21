@@ -24,16 +24,40 @@
 				   success:function(msg){
 					   var ar=jQuery.parseJSON(msg);
 					   //alert("rec="+ar);
+					   console.log(ar);
 					   if(ar[0]=="Existance"){
 						   alert("No Such Id exists");
 					   }
+					   else if(ar[0]=="OK"){
+						     console.log("status OK")
+							 console.log("ar1:"+ar[1]+",ar[2:"+ar[2])
+						     $.ajax({
+								 url:"pre-clas-join.php",
+								 type:"post",
+								 data:{},
+								 success:function(msg){
+									 var noi=jQuery.parseJSON(msg);
+									//  alert("HEeelo"+noi);
+									 window.open("ClassmPageJoiner.php","_self");
+								 }
+								 
+							 });
+					   }
+					   else if(ar[0]=="ENA"){
+                            alert("User has Already Joined")
+							return false     
+					   }
+					   else if(ar[0]="mail_mt"){
+						   alert("The email is not the same")
+					   }
 					   else{
-						   var to=ar[0];
-						   var body=ar[1];
-						   $("#xeeez").append(to);
-						   sendEmail(to,body);
-						   $("#frm1").hide();
-						   $("#frm2").show();
+						   alert("An Error occured:"+ar[0])
+						//    var to=ar[0];
+						//    var body=ar[1];
+						//    $("#xeeez").append(to);
+						//    sendEmail(to,body);
+						//    $("#frm1").hide();
+						//    $("#frm2").show();
 						  
 					   }
 					

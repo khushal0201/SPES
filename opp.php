@@ -1,6 +1,7 @@
 <?php
    session_start();
 ?>
+<!-- //creation of a new class, try to make only one table for the class  -->
 <!doctype html>
 <html>
    <head>

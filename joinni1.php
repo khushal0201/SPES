@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- //first join in a class -->
 <html>
     <head>
 	    <title>Join class</title>

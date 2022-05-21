@@ -2,6 +2,7 @@
    session_start();
    if(!isset($_SESSION["trav"]))
      $_SESSION["trav"]="1";
+   $_SESSION["id"]="";
  
 ?>
 <!doctype html>
@@ -109,7 +110,7 @@
 				  $(this).find(".clss").trigger("click");
 			  }
 		  });
-		   $(document).on("click",".clss",function(event){
+		   $(document).on("click",".clss",function(event){// Setting the session for creator
 			  
 			   alert("hello");
 			   var id=$(this).attr("id");
@@ -121,7 +122,7 @@
 			   
 			   $.ajax({
 				   url:"set_session.php",
-				   data:{name:name,id:id,ty:" ",ins:ins,date:date,sess:sess},
+				   data:{name:name,id:id,ty:"voll",ins:ins,date:date,sess:sess},
 				   type:"post",
 				   success:function(){
 					   window.open("ClassmPageCreator.php","_self");
@@ -129,7 +130,7 @@
 			   });
 		   });
 		 
-           $(document).on("click",".clss1",function(event){
+           $(document).on("click",".clss1",function(event){ // Setting the session for joiner
 			  
 			   //alert("hello");
 			   var id=$(this).attr("id");
@@ -154,7 +155,7 @@
 			   });
 		   });		 
 		   
-		   $(document).on("click","#but0",function(){
+		   $(document).on("click","#but0",function(){//creation of a new class 
 			   if(tchk=="false"){
 				    alert("You need to Login or Signup First")
 					return false;
@@ -163,7 +164,7 @@
 			   
 		   });
 		   
-		   $(document).on("click","#but1",function(){
+		   $(document).on("click","#but1",function(){//first join in a class
 			   if(tchk=="false"){
 					return false;
 				}
@@ -176,7 +177,7 @@
 		   $("#b13").click(function(){
 			   window.open("signup-user.php","_self");
 		   });
-		   $(document).on("click","#sigou",function(e){
+		   $(document).on("click","#sigou",function(e){// it is for logging out
 			   e.preventDefault();
 			   $.ajax({
 				   url:"set_session.php",

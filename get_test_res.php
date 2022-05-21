@@ -9,10 +9,11 @@
    $tbps=array();
    if($wh=="cols"){
 	   $sql3="";
-	  if($_SESSION["designate"]!="t"){
+	  if($_SESSION["designate"]!="t"){//For creator and Students
 		  $sql3="select * from no_test_s where test_id=".$id." and class_id='".$clsis."'";
 	  }
-	  if($_SESSION["designate"]=="t"){
+	  
+	  if($_SESSION["designate"]=="t"){//Getting subject wise tests for teachers
 	   $subid=$_SESSION["subs"];
 	   if($_SESSION["test_ty"]=="nt")
           $sql3="select * from no_test_s where test_id=".$id." and class_id='".$clsis."' and sub_id='".$subid."'";

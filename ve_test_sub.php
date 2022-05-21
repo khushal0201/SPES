@@ -54,6 +54,7 @@
 			 
 		 });
 		 var tcol="";
+		 //Getting one class test data for teacher or CS 
 		 $.ajax({
 			 url:"get_test_res.php",
 			 data:{wh:"cols"},
@@ -67,6 +68,7 @@
 		 });
 		 var tbc=0;
 		 function make(){
+		//Getting student id or whole class
 		 $.ajax({
 			 url:"get_test_res.php",
 			 data:{wh:"get",type:"tea"},
@@ -173,6 +175,7 @@
 				 $("#mod1").modal('toggle');
 				 return false;
 			 }
+			 //Submitting the values of Normal test
 			 $.ajax({
 				 url:"get_test_res.php",
 				 data:{wh:"sta"},
@@ -185,7 +188,7 @@
 				 }
 			 });
 		 });
-		 
+		 //This is For Creator creating the test
 		 $(document).on("click","#b3",function(eve){
 			 eve.preventDefault();
 			 if(tbc>0){
@@ -205,6 +208,7 @@
 				 }
 			 });
 		 });
+		//Teacher updating the test marks
 		 $(document).on("input",".dis",function(){
 			 if($(this)[0].checkValidity()==false){
 				 return false;
@@ -305,11 +309,11 @@
 	  <?php } ?>
 	 
        <!--<div id="d13">
-	     <?php# if($_SESSION["designate"]!="Creator"){ ?>
-	       <h3>TEacher ID:<?php #echo $_SESSION["pid"]; ?></h3><br>
-		 <h3>Teachers Name:<?php# echo $_SESSION["pnm"]; ?></h3>
-		 <?php# } else {?>
-		 <h3>Your Designation=<?php# echo $_SESSION["designate"]; }?></h3>
+	     <?//php# if($_SESSION["designate"]!="Creator"){ ?>
+	       <h3>TEacher ID:<?//php #echo $_SESSION["pid"]; ?></h3><br>
+		 <h3>Teachers Name:<?//php# echo $_SESSION["pnm"]; ?></h3>
+		 <?//php# } else {?>
+		 <h3>Your Designation=<?//php# echo $_SESSION["designate"]; }?></h3>
 		 
        </div>-->
 

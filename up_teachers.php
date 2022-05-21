@@ -104,8 +104,9 @@
 					 }
 				 });
 			 });
-			 $(document).on("input",".seel",function(){
+			 $(document).on("input",".seel",function(){//On selecting from the dropdown menu
 				 var tba="nott";
+				 //Adding or removing old data
 				 if($(this).closest("select").attr("data-old")!=""){
 					 tba=$(this).closest("select").attr("data-old");
 				 }

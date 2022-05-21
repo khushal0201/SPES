@@ -25,7 +25,11 @@
 	   <script>
 	       $(document).ready(function(){
 			   $('[data-toggle="tooltip"]').tooltip();
+			   var cg="";
+			   var name="";
+			   var email="";
 			   if("<?php echo $_SESSION['v_ty'];?>"=="teach"){
+				   cg="teach";
 			   $.ajax({
 				   url:"select_students.php",
 				   data:{ty:"teach"},
@@ -52,7 +56,7 @@
 										  break;
 									  }
 								  }
-								  $("#t1>tbody").append("<tr><td>"+pss[x].tid+"</td><td>"+pss[x].tnm+"</td><td>"+subn+"</td><td>"+pss[x].temail+"</td><td><a href='#' data-toggle='tooltip' data-placement='bottom' title='Edit'><span  class='cce far fa-edit' style='font-size:24px'></span></a></td></tr>"); 
+								  $("#t1>tbody").append("<tr class='pus'><td class='yid'>"+pss[x].tid+"</td><td class='enm'>"+pss[x].tnm+"</td><td >"+subn+"</td><td class='eml'>"+pss[x].temail+"</td><td><a href='#' data-toggle='tooltip' data-placement='bottom' title='Edit'><span  class='cce far fa-edit' style='font-size:24px'></span></a></td></tr>"); 
 					             }
 							}
                                							
@@ -60,6 +64,7 @@
 				   }
 			   });}
 			   else{
+				   cg="student"
 				   $.ajax({
 				   url:"select_students.php",
 				   data:{},
@@ -71,14 +76,51 @@
 					   
 					   for(x in pss){
 						 
-						  $("#t1>tbody").append("<tr><td>"+pss[x].stud_id+"</td><td>"+pss[x].name+"</td><td>"+pss[x].email+"</td><td><a href='#' data-toggle='tooltip' data-placement='bottom' title='Edit'><span  class='cce far fa-edit' style='font-size:24px'></span></a></td></tr>"); 
+						  $("#t1>tbody").append("<tr><td class='yid'>"+pss[x].stud_id+"</td><td class='enm'>"+pss[x].name+"</td><td class='eml'>"+pss[x].email+"</td><td><a href='#' data-toggle='tooltip' data-placement='bottom' title='Edit'><span  class='cce far fa-edit' style='font-size:24px'></span></a></td></tr>"); 
 					   }
 				   }
 			   });
 			   }
+			   var htm="";
+			   //Here i have to put Edit
 			   $(document).on("click",".cce",function(){
-				   $("#mod1").modal("toggle");
+				//    $("#mod1").modal("toggle");
+				       htm=$(".cce").closest("td").html()
+                      
+					   var name=$(this).closest("tr").find(".enm").html()
+					   var email=$(this).closest("tr").find(".eml").html()
+
+					   $(this).closest("tr").find(".eml").html(`<input type='text' value='${email}'>`)
+					   $(this).closest("tr").find(".enm").html(`<input type='text' value='${name}'>`)
+                      
+					  $(this).closest("td").html("<button class='save'>Save</button>")
 			   });
+			   $(document).on("click",".save",function(){
+				   var sus=$(this)
+                   var pus=$(this).closest("tr");
+				   var eml=$(this).closest("tr").find(".eml>input").val()
+				   var enm=$(this).closest("tr").find(".enm>input").val()
+				   var eid=$(this).closest("tr").find(".yid").html()
+				   console.log(pus)
+				   $.ajax({
+					   url:"update_stu_tea.php",
+					   data:{name:enm,mail:eml,id:eid},
+					   type:"post",
+					   success:function(msg){
+                              pc=JSON.parse(msg);
+					          console.log(pc);
+							  if(pc[0]==1){
+							     pus.find(".eml").html(eml)
+					             pus.find(".enm").html(enm)
+							  }
+							  else{
+								  pus.find(".eml").html(email)
+					            pus.find(".enm").html(name)
+							  }
+							  sus.closest("td").html(htm)
+						}
+				   })
+			   })
 		   });
 	   </script>
 	   <style>

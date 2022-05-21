@@ -128,7 +128,7 @@
 				  $sql12="delete from online_norm where id=".$_POST["ott"];
 			  }
 			   if(!mysqli_query($conn,$sql12)){
-				   array_push($err,"err=".mysqli_query($conn));
+				   array_push($err,"err=".mysqli_error($conn));
 			   }
 			
 				$tid=$_POST["tid"];
@@ -402,7 +402,7 @@
 			}
 		}
 		else{
-			if($res7["test_date"]<date("Y-m-d")){
+			if($res7["test_date"]<date("Y-m-d")){//There is an Error
 				array_push($tbps,"0");
 			}
 			else 

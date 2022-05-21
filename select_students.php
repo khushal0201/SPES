@@ -1,4 +1,5 @@
 <?php
+    // selecting the students
     session_start();
 	$err=array();
 	$hop=array();
