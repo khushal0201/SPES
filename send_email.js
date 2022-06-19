@@ -3,8 +3,8 @@
 		  alert("ema="+to);
       Email.send({
         Host : "smtp.gmail.com",
-        Username:"khumonar@gmail.com",
-        Password: "hviwwibrltcfqrcp",
+        Username:"xcv",
+        Password: "xcy",
         
         To: to,
         From: "Performers.com <khil@gmail.com>",
@@ -15,10 +15,7 @@
       console.log("emailVerification out")
 	  }
 
-    // Some other Details
-    // Host : "smtp.elasticemail.com",
-    // password: 62141FB633437E7E777D45CEB6586945C25E
-    // Username:khumonar@gmail.com
+   
 	  
 	 
   
